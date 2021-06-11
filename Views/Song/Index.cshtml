@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MVC.ViewModels.SongVM>
+
+@{
+    ViewBag.Title = "Song";
+}
+
+@*@if (User.Identity.IsAuthenticated)
+{*@
+
+    <h2>Song</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @using (Html.BeginForm())
+    {
+        <p>
+            Search Song: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+            <input type="submit" value="Find" />
+        </p>
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.songName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Singer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SongStyleId)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.songName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Singer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.styleVM.Title)
+                    @Html.HiddenFor(modelItem => item.SongStyleId, new { @id = "Style", @Name = "Style" })
+                </td>
+                <td class="buttons">
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @*@Html.ActionLink("Share", "Share", new { id = item.Id })*@
+                </td>
+
+            </tr>
+
+
+        }
+
+
+    </table>
+@*}
+else
+{
+    <div>
+        <h2>Please, Login</h2>
+        @Html.ActionLink("Login", "Login", "Home")
+    </div>
+    <div>
+        <h2>You do not have an account?</h2>
+        @Html.ActionLink("Register", "Register", "User")
+    </div>
+}*@
+
+

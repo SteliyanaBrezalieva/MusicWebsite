@@ -1,0 +1,48 @@
+﻿@model MVC.ViewModels.SingerVM
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Details</h2>
+
+    <div>
+        <h4>SingerVM</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SongStyleId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SongStyleId)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+else
+{
+    <div>
+        <h2>Please, Login</h2>
+        @Html.ActionLink("Login", "Login", "Home")
+    </div>
+    <div>
+        <h2>You do not have an account?</h2>
+        @Html.ActionLink("Register", "Register", "User")
+    </div>
+}
+
